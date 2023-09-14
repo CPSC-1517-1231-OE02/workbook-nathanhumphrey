@@ -5,7 +5,11 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HockeyData", "HockeyData\HockeyData.csproj", "{3C1D29FB-46BD-46FA-8A99-EE6D19F70DEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{B99AC0D1-512A-4718-A03C-37EA0225F91C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Utilities.csproj", "{B99AC0D1-512A-4718-A03C-37EA0225F91C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HockeyConsoleApp", "HockeyConsoleApp\HockeyConsoleApp.csproj", "{C60AB654-7166-4243-823D-AC2DB37D49E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HockeyTestProject", "HockeyTestProject\HockeyTestProject.csproj", "{D7C72A88-3321-4326-ADA9-925A7BB7F0C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{B99AC0D1-512A-4718-A03C-37EA0225F91C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B99AC0D1-512A-4718-A03C-37EA0225F91C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B99AC0D1-512A-4718-A03C-37EA0225F91C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C60AB654-7166-4243-823D-AC2DB37D49E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C60AB654-7166-4243-823D-AC2DB37D49E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C60AB654-7166-4243-823D-AC2DB37D49E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C60AB654-7166-4243-823D-AC2DB37D49E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7C72A88-3321-4326-ADA9-925A7BB7F0C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7C72A88-3321-4326-ADA9-925A7BB7F0C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7C72A88-3321-4326-ADA9-925A7BB7F0C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7C72A88-3321-4326-ADA9-925A7BB7F0C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
