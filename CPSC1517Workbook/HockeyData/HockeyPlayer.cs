@@ -24,7 +24,7 @@ namespace Hockey.Data
                 return _birthPlace;
             }
 
-            set
+            private set
             {
                 if (Utilities.IsNullEmptyOrWhiteSpace(value))
                 {
@@ -42,7 +42,7 @@ namespace Hockey.Data
                 return _firstName;
             }
 
-            set
+            private set
             {
                 if (Utilities.IsNullEmptyOrWhiteSpace(value))
                 {
@@ -60,7 +60,7 @@ namespace Hockey.Data
                 return _lastName;
             }
 
-            set
+            private set
             {
                 if (Utilities.IsNullEmptyOrWhiteSpace(value))
                 {
@@ -78,7 +78,7 @@ namespace Hockey.Data
                 return _heightInInches;
             }
 
-            set
+            private set
             {
                 if (Utilities.IsZeroOrNegative(value))
                 {
@@ -95,7 +95,7 @@ namespace Hockey.Data
                 return _weightInPounds;
             }
 
-            set
+            private set
             {
                 if (!Utilities.IsPositive(value))
                 {
@@ -113,7 +113,7 @@ namespace Hockey.Data
                 return _dateOfBirth;
             }
 
-            set
+            private set
             {
                 if (Utilities.IsInTheFuture(value))
                 {
@@ -127,19 +127,6 @@ namespace Hockey.Data
         public Position Position { get; set; }
 
         public Shot Shot { get; set; }
-
-        // Default constructor
-        public HockeyPlayer()
-        {
-            _firstName = string.Empty;
-            _lastName = string.Empty;
-            _birthPlace = string.Empty;
-            _dateOfBirth = new DateOnly();
-            _weightInPounds = 0;
-            _heightInInches = 0;
-            Position = Position.Center;
-            Shot = Shot.Left;
-        }
 
         // Greedy constructor
         public HockeyPlayer(string firstName, string lastName, string birthPlace,
@@ -155,6 +142,12 @@ namespace Hockey.Data
             DateOfBirth = dateOfBirth;
             Shot = shot;
             Position = position;
+        }
+
+        // Override ToString
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName}";
         }
     }
 }

@@ -26,6 +26,8 @@
         }
 
         public static bool IsPositive(int value) => value > 0 ? true : false;
+        public static bool IsPositive(double value) => value > 0.0;
+        public static bool IsPositive(decimal value) => value > 0.0M;
 
         // Expression-bodied method
         public static bool IsNullEmptyOrWhiteSpace(string value) => 

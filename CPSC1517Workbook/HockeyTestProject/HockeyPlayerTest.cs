@@ -9,6 +9,9 @@ namespace Hockey.Test
         public HockeyPlayer GenerateTestPlayer()
         {
             return new HockeyPlayer();
+
+            int[] nums = { 1, 2, 3 };
+
         }
 
         [Fact]
