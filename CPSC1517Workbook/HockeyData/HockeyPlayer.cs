@@ -15,6 +15,7 @@ namespace Hockey.Data
         private int _heightInInches;
         private int _weightInPounds;
         private DateOnly _dateOfBirth;
+        private int _jerseyNumber;
 
         // Properties
         public string BirthPlace
@@ -130,7 +131,7 @@ namespace Hockey.Data
 
         // Greedy constructor
         public HockeyPlayer(string firstName, string lastName, string birthPlace,
-            DateOnly dateOfBirth, int weightInPounds, int heightInInches,
+            DateOnly dateOfBirth, int weightInPounds, int heightInInches, int jerseyNumber,
             Position position = Position.Center, 
             Shot shot = Shot.Left)
         {
@@ -140,9 +141,31 @@ namespace Hockey.Data
             HeightInInches = heightInInches;
             WeightInPounds = weightInPounds;
             DateOfBirth = dateOfBirth;
+            JerseyNumber = jerseyNumber;
             Shot = shot;
             Position = position;
         }
+
+        public int JerseyNumber
+        {
+            get
+            {
+                return _jerseyNumber;
+            }
+
+            set
+            {
+                if (value < 1 || value > 98)
+                {
+                    throw new ArgumentOutOfRangeException("Jersey number must be between 1 and 98.",
+                        new ArgumentException());
+                }
+
+                _jerseyNumber = value;
+            }
+        }
+
+        public int Age => (DateOnly.FromDateTime(DateTime.Now).DayNumber - DateOfBirth.DayNumber) / 365;
 
         // Override ToString
         public override string ToString()
