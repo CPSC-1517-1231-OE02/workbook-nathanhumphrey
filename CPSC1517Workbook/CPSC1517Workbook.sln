@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HockeyConsoleApp", "HockeyC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HockeyTestProject", "HockeyTestProject\HockeyTestProject.csproj", "{D7C72A88-3321-4326-ADA9-925A7BB7F0C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilitiesTestProject", "UtilitiesTestProject\UtilitiesTestProject.csproj", "{4698536E-7F42-40F3-88E5-83C5250E8D5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UtilitiesTestProject", "UtilitiesTestProject\UtilitiesTestProject.csproj", "{4698536E-7F42-40F3-88E5-83C5250E8D5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSampleApp", "BlazorSampleApp\BlazorSampleApp.csproj", "{AA062E61-197F-42C4-9AEF-F49450B279DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{4698536E-7F42-40F3-88E5-83C5250E8D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4698536E-7F42-40F3-88E5-83C5250E8D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4698536E-7F42-40F3-88E5-83C5250E8D5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA062E61-197F-42C4-9AEF-F49450B279DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA062E61-197F-42C4-9AEF-F49450B279DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA062E61-197F-42C4-9AEF-F49450B279DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA062E61-197F-42C4-9AEF-F49450B279DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

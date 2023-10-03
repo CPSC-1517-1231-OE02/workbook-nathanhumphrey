@@ -1,0 +1,31 @@
+﻿<h3>Current Date and Time</h3>
+
+<p>The raw datetime is: @now</p>
+<p>The current date is: @GetLocalDate()</p>
+<p>The current time is: @GetLocalTime()</p>
+
+@code {
+	private DateTime now;
+
+	protected override void OnInitialized()
+	{
+		now = DateTime.Parse("2023-10-02 08:43:00 pm");
+		base.OnInitialized();
+	}
+
+	protected override Task OnInitializedAsync()
+	{
+		now = DateTime.Now;
+		return base.OnInitializedAsync();
+	}
+
+	private string GetLocalDate()
+	{
+		return now.ToString("MMMM dd, yyyy");
+	}
+
+	private string GetLocalTime()
+	{
+		return now.ToString("hh:mm tt");
+	}
+}
