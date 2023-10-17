@@ -1,6 +1,7 @@
 using FluentAssertions;
 using Hockey.Data;
 using System.Collections;
+using System.Globalization;
 
 namespace Hockey.Test
 {
@@ -16,7 +17,7 @@ namespace Hockey.Test
         const Position PlayerPosition = Position.Center;
         const Shot PlayerShot = Shot.Left;
         static readonly DateOnly DateOfBirth = new DateOnly(1994, 01, 14);
-        const string ToStringValue = $"{FirstName} {LastName}";
+        string ToStringValue = $"{FirstName},{LastName},{JerseyNumber},{PlayerPosition},{PlayerShot},{HeightInInches},{WeightInPounds},{DateOfBirth.ToString("MMM-dd-yyyy", CultureInfo.InvariantCulture)},{BirthPlace}";
         readonly int Age = (DateOnly.FromDateTime(DateTime.Now).DayNumber - DateOfBirth.DayNumber) / 365;
 
         //[Fact]
@@ -118,6 +119,17 @@ namespace Hockey.Test
             actual = player.ToString();
 
             actual.Should().Be(ToStringValue);
+        }
+
+        [Fact]
+        public void HockeyPlayer_Parse_ParsesCorrectly()
+        {
+            HockeyPlayer actual;
+            string line = $"{FirstName},{LastName},{JerseyNumber},{PlayerPosition},{PlayerShot},{HeightInInches},{WeightInPounds},Jan-04-1994,{BirthPlace}";
+
+            actual = HockeyPlayer.Parse(line);
+
+            actual.Should().BeOfType<HockeyPlayer>();
         }
     }
 }
