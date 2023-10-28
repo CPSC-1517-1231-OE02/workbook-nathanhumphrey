@@ -1,0 +1,137 @@
+﻿@page "/service"
+
+<h3>Service Request</h3>
+
+<fieldset class="form-group card p-3 mb-3">
+	<legend>Contact Information</legend>
+	<div class="mb-3">
+		<label class="form-label" for="contact-name">Contact Name:</label>
+		<input class="form-control @(ErrorList.ContainsKey("contact-name") ? "is-invalid" : "")" type="text" id="contact-name" @bind="ContactName" />
+		@if (ErrorList.ContainsKey("contact-name"))
+		{
+			<div class="mt-3 alert alert-danger">@ErrorList["contact-name"]</div>
+		}
+	</div>
+	<div class="mb-3">
+		<label class="form-label" for="phone-number">Phone Number:</label>
+		<input class="form-control" type="text" id="phone-number" placeholder="123-456-7890" @bind="PhoneNumber" />
+	</div>
+	<div class="mb-3">
+		<label class="form-label" for="years">Number of Years as a Customer</label>
+		<input class="form-control" type="number" id="years" min="0" step="1" @bind="YearsAsCustomer" />
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="checkbox" id="current-customer" @bind="CurrentCustomer" />
+		<label class="form-check-label" for="current-customer">Current Customer</label>
+	</div>
+</fieldset>
+
+<fieldset class="form-group card p-3 mb-3">
+	<legend>Service Information</legend>
+	<div class="form-check">
+		<input class="form-check-input" type="radio" name="service-type" id="internet"
+			   checked="@(ServiceType == "INTERNET")"
+		@onclick="@(() => ServiceType = "INTERNET")" />
+		<label class="form-check-label" for="internet">Internet</label>
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="radio" name="service-type" id="tv"
+			   checked="@(ServiceType == "TV")"
+		@onclick="@(() => ServiceType = "TV")" />
+		<label class="form-check-label" for="tv">TV</label>
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="radio" name="service-type" id="internet-tv"
+			   checked="@(ServiceType == "INTERNET_TV")"
+		@onclick="@(() => ServiceType = "INTERNET_TV")" />
+		<label class="form-check-label" for="internet-tv">Internet & TV</label>
+	</div>
+</fieldset>
+
+<fieldset class="form-group card p-3 mb-3">
+	<legend>Required Service</legend>
+	<div class="mb-3">
+		<select class="form-select" id="reason" @bind="Reason">
+			<option selected disabled>Select and option</option>
+			<option value="interrupt">Service Interruption</option>
+			<option value="new">New Service</option>
+			<option value="other">Other</option>
+		</select>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" for="request-info">Request Information</label>
+		<textarea class="form-control" id="request-info" rows="3" @bind="ServiceRequest"></textarea>
+	</div>
+</fieldset>
+
+<div class="mb-3">
+	<button class="btn btn-primary" @onclick="HandleSubmit">Submit Request</button>
+</div>
+
+@if (Success)
+{
+	<div class="mb-3 alert alert-info">
+		<p>Request successfully submitted</p>
+		<p>@((MarkupString)DataSent)</p>
+	</div>
+}
+
+@code {
+	public string? ContactName { get; set; }
+	public string? PhoneNumber { get; set; }
+	public int YearsAsCustomer { get; set; }
+	public bool CurrentCustomer { get; set; }
+
+	public string? ServiceType { get; set; }
+
+	public string? Reason { get; set; }
+	public string? ServiceRequest { get; set; }
+
+	public bool Success { get; set; } = false;
+	public string? DataSent { get; set; }
+
+	public Dictionary<string, string> ErrorList { get; set; } = new();
+
+	public void HandleSubmit()
+	{
+		// Reset the erorrs
+		ErrorList.Clear();
+
+		// Validate the contact
+		if (string.IsNullOrWhiteSpace(ContactName))
+		{
+			ErrorList.Add("contact-name", "Contact name cannot be empty");
+		}
+
+		// TODO: complete the validation checks for remaining fields
+		// Phone number must match pattern "NNN-NNN-NNNN"
+		// Number of years must be greater than or equal to zero
+		// Service type must not be null
+		// Reason cannot be the default (i.e. Select and option)
+		// Required service must not be null, empty, or white space
+
+		if (ErrorList.Count == 0)
+		{
+			// If count is zero, then the form is valid
+			Success = true;
+
+			// Build the output message
+			DataSent = $@"<strong>Contact name: </strong> {ContactName}
+				<strong>Phone: </strong> {PhoneNumber}
+				<strong>Years: </strong> {YearsAsCustomer}
+				<strong>Current: </strong> {CurrentCustomer}
+				<strong>Service type: </strong> {ServiceType}
+				<strong>Reason: </strong> {Reason}
+				<strong>Information: </strong> {ServiceRequest}";
+
+			// Reset the fields
+			ContactName = "";
+			PhoneNumber = "";
+			YearsAsCustomer = 0;
+			CurrentCustomer = false;
+			ServiceType = null;
+			Reason = "";
+			ServiceRequest = "";
+		}
+	}
+}
