@@ -1,0 +1,37 @@
+﻿@page "/customers/{CustomerId}"
+@using WestWindSystem.BLL;
+@using WestWindSystem.Entities;
+
+<h3>Customer Page</h3>
+
+@if (CurrentCustomer != null)
+{
+	<div>
+		<p>@CurrentCustomer.ContactName</p>
+	</div>
+}
+else
+{
+	<div class="alert alert-info">
+		No customer found @(string.IsNullOrWhiteSpace(CustomerId) ? "" : $"with id = {CustomerId}")
+	</div>
+}
+
+
+@code {
+	public Customer? CurrentCustomer { get; set; }
+	[Parameter]
+	public string? CustomerId { get; set; } 
+
+	[Inject]
+	CustomerServices? CustomerServices { get; set; }
+
+	protected override void OnInitialized()
+	{
+		if (CustomerId != null && CustomerServices != null)
+		{
+			CurrentCustomer = CustomerServices.GetCustomerById(CustomerId);
+		}
+		base.OnInitialized();
+	}
+}
