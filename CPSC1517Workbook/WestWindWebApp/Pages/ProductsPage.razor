@@ -1,0 +1,65 @@
+﻿@page "/products/{CategoryId:int?}"
+
+<h3>Category Products</h3>
+
+<fieldset class="mb-3">
+	<legend>Category Selection</legend>
+	<div class="row row-cols-lg-auto g-3 align-items-center">
+		<div class="cols-12">
+			<label class="visually-hidden" for="category">Category:</label>
+			<select class="form-select" id="category" @bind="CategoryId">
+				<option selected disabled value="0">Select a category</option>
+				@if (Categories != null)
+				{
+					@foreach (var c in Categories)
+					{
+						<option value="@c.CategoryId">@c.CategoryName</option>
+					}
+				}
+			</select>
+		</div>
+		<div class="cols-12">
+			<button class="btn btn-primary" @onclick="HandleCategorySelected">List Products</button>
+		</div>
+	</div>
+</fieldset>
+
+<fieldset class="mb-3">
+	<legend>Search for Products</legend>
+	<div class="row row-cols-lg-auto g-3 align-items-center">
+		<div class="cols-12">
+			<label class="visually-hidden" for="search">Search:</label>
+			<input class="form-control" type="text" id="search" @bind="PartialSearch" />
+		</div>
+		<div class="cols-12">
+			<button class="btn btn-primary" @onclick="HandlePartialSearch">Search for Products</button>
+		</div>
+	</div>
+</fieldset>
+
+@if (Products != null)
+{
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Product Id</th>
+				<th>Name</th>
+				<th>Discontinued</th>
+				<th>Supplier</th>
+				<th>Unit Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var p in Products)
+			{
+				<tr>
+					<td>@p.ProductId</td>
+					<td>@p.ProductName</td>
+					<td>@p.Discontinued</td>
+					<td>@p.Supplier.CompanyName</td>
+					<td class="text-end">@($"{ p.UnitPrice:C}")</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
